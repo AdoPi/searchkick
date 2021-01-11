@@ -145,7 +145,8 @@ module Searchkick
             searchkick_stopwords: {
               type: "stop",
               ignore_case: true,
-              stopwords: "_french_"
+              stopwords: "_french_",
+              token_separator: "whitespace"
             }
           },
           char_filter: {
