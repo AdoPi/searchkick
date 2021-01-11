@@ -49,7 +49,7 @@ module Searchkick
               tokenizer: "standard",
               # synonym should come last, after stemming and shingle
               # shingle must come before searchkick_stemmer
-              filter: ["lowercase", "asciifolding", "searchkick_index_shingle", "searchkick_stemmer"]
+              filter: ["lowercase", "asciifolding", "searchkick_index_shingle", "searchkick_stemmer","searchkick_stopwords"]
             },
             searchkick_search: {
               type: "custom",
@@ -140,6 +140,12 @@ module Searchkick
               # use stemmer if language is lowercase, snowball otherwise
               type: language == language.to_s.downcase ? "stemmer" : "snowball",
               language: language || "English"
+            },
+            # TODO custom options
+            searchkick_stopwords: {
+              type: "stop",
+              ignore_case: true,
+              stopwords: "_french_"
             }
           },
           char_filter: {
